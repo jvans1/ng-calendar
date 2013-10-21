@@ -1,0 +1,57 @@
+<div>
+  <div class='col-md-2'>
+    <span class='title'>Calendar</span>
+  </div>
+  <div class='col-md-5'>
+    <ul class='options no-list-style'>
+      <li >
+        Back
+      </li>
+      <li >
+        Forward
+      </li>
+      <li class='day'>
+        <span>September 25 2013</span>
+      </li>
+    </ul>
+  </div>
+  <div class='col-md-5'>
+    <ul class='options no_list_style '>
+      <li ng-class="{'active': day }" >
+        Day
+      </li ><li ng-class="{'active': week }" >
+        Week
+      </li><li ng-class="{'active': month }" >
+        Month
+      </li><li ng-class="{'active': agenda }" >
+        Agenda
+      </li><li ng-class="{'active': options }" >
+        Options
+      </li>
+    </ul>
+  </div>
+  <div class='header'>
+  </div>
+  <div class='calendar'>
+    <div class='col-md-2'>
+      <div></div>
+    </div>
+    <table class='col-md-9'>
+      <thead>
+        <tr>
+          <th colspan='5' class='cal-head'>Sunday Sept 25th</th>
+        </tr>
+      </thead>
+      <tbody id="cal">
+        <tr ng-repeat="hour in hours" class='hour'>
+          <th class="hour-label">{{hour}}am</th>
+          <td id="{{hour}}hour">  </td>
+          <td></td>
+          <td></td>
+          <td></td> 
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
