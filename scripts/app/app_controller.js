@@ -1,15 +1,20 @@
 calendar.controller('appCtrl',[ '$scope', function($scope){
+  $scope.ballsack = "Balls!"
+  $scope.calOptions = {
+    hourDivide: 5,
+  }
+
   $scope.events = [
     {
-      time: '3',
+      startTime: '17:56:04',
       title: 'Booty call',
     },
     {
-      time: '6',
+      startTime: '6:12:04',
       title: 'dinner',
     },
     {
-      time: '2',
+      startTime: '10:05:04',
       title: 'kickball'
     }
   ]

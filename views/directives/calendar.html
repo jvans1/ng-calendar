@@ -42,13 +42,19 @@
           <th colspan='5' class='cal-head'>Sunday Sept 25th</th>
         </tr>
       </thead>
-      <tbody id="cal">
-        <tr ng-repeat="hour in hours" class='hour'>
+      <tbody id="table{{hour}}hour" ng-repeat="hour in hours">
+        <tr class='hour'>
           <th class="hour-label">{{hour}}am</th>
-          <td id="{{hour}}hour">  </td>
-          <td></td>
-          <td></td>
-          <td></td> 
+          <td class='col-md-9' >
+            <table class='col-md-9'>
+              <tr  class='time-slot' ng-repeat="timeSlot in hourSlots" >
+                <td id="{{hour}}{{timeSlot}}"> {{event.title || "b"}} </td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>              
+            </table>
+          </td>
         </tr>
       </tbody>
     </table>
