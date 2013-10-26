@@ -1,4 +1,4 @@
-<div>
+<div class='cal-container'>
   <div class='col-md-2'>
     <span class='title'>Calendar</span>
   </div>
@@ -30,9 +30,7 @@
       </li>
     </ul>
   </div>
-  <div class='header'>
-  </div>
-  <div class='calendar'>
+  <div>
     <div class='col-md-2'>
       <div></div>
     </div>
@@ -42,7 +40,7 @@
           <th colspan='5' class='cal-head'>Sunday Sept 25th</th>
         </tr>
       </thead>
-      <tbody id="table{{hour}}hour" ng-repeat="hour in hours">
+      <tbody ng-repeat="hour in hours">
         <tr class='hour'>
           <th class="hour-label">{{hour}}am</th>
           <td class='col-md-9' >

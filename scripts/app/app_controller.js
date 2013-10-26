@@ -1,7 +1,8 @@
 calendar.controller('appCtrl',[ '$scope', function($scope){
   $scope.ballsack = "Balls!"
   $scope.calOptions = {
-    hourDivide: 5,
+    hourDivide: 30,
+    height: 1000,
   }
 
   $scope.events = [

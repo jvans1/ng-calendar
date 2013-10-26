@@ -1,0 +1,49 @@
+.cal-container{
+  border: 1px solid gray;
+  width: 70%;
+  margin: auto;
+  height: 1000px;
+  overflow:scroll;
+}
+
+.header{
+  width: 70%;
+  height: 40px;
+  margin: auto;  
+}
+
+.chunk{
+  margin: 0 !important;
+  
+  height: 40px;
+  border-bottom: 10px solid gray;
+  width: 990px;
+}
+.block {
+  display: block;
+}
+.chunk.top{
+  border-bottom: 2px solid black ;
+}
+.head{
+  border-right: 1px solid gray;
+}
+
+.cal-title{
+  display:inline-block;
+  margin: 0 !important;
+}
+h2.cal-title.date{
+  margin-left: 30%;
+  margin-right: 30%;
+  height: 40px;
+}
+
+th, td{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+th{
+  width: 50px;
+}
