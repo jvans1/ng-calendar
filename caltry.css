@@ -5,32 +5,26 @@
   height: 1000px;
   overflow:scroll;
 }
-
-.header{
-  width: 70%;
-  height: 40px;
-  margin: auto;  
-}
-
 .chunk{
   margin: 0 !important;
+  border-bottom: 1px solid gray;  
   
   height: 40px;
-  border-bottom: 10px solid gray;
   width: 990px;
 }
 .block {
   display: block;
 }
-.chunk.top{
-  border-bottom: 2px solid black ;
-}
+
 .head{
+  width: 50px;
   border-right: 1px solid gray;
 }
 
+.underline{ 
+}
 .cal-title{
-  display:inline-block;
+  display: inline-block;
   margin: 0 !important;
 }
 h2.cal-title.date{
@@ -38,12 +32,7 @@ h2.cal-title.date{
   margin-right: 30%;
   height: 40px;
 }
-
-th, td{
-  display: inline-block;
+.cal-table{
   width: 100%;
-  height: 100%;
-}
-th{
-  width: 50px;
+  border-collapse: collapse;
 }
