@@ -1,66 +1,100 @@
-.calendar{
-  width: 100%;
+.cal-container{
+  border: 1px solid gray;
+  width: 70%;
+  margin: auto;
   height: 1000px;
-  overflow: scroll;
+  overflow:scroll;
 }
-
-.header{
-  height: 37px;
-  margin-top: 2px;
-  margin-bottom: 2px;
-  padding-top: 3;
-  padding-bottom: 3;
-  border-bottom: 1px solid rgb(198, 198, 198);
-} 
-.inline-block{
+.cal-nav-outer{
+  border: 1px solid gray;
+  width: 70%;
+  margin: auto;
+}
+.cal-nav{
   display: inline-block;
 }
+.chunk{
+  margin: 0 !important;
+  border-bottom: 1px solid gray;  
+  
+  height: 40px;
+  width: 990px;
+}
+.block {
+  display: block;
+}
 
-tr .time-slot{
-  border-bottom: 1px solid black;
+.head{
+  width: 50px;
+  border-right: 1px solid gray;
 }
-tr .time-slot:last-child{
-  border-bottom: none;
-}
-.title{
-  font-size: 20px;
-  font-weight: bold;
 
+.cal-table{
+  width: 100%;
+  border-collapse: collapse;
 }
-.hour{
-  border: 1px solid rgb(222, 222, 222);
-  background: -moz-linear-gradient(center top , rgb(248, 248, 248), rgb(241, 241, 241)) repeat scroll 0% 0% rgb(248, 248, 248);
-  height: 80px;
-}
-.cal-head{
+
+
+/* Boostrap like
+*/
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.428571429;
   text-align: center;
-}
-
-.hour > th{
-  width: 15%;
-}
-.hour > th.hour-label{
-  background: white;
-  width: 9%;
-}
-
-.active{
-  background: #7B898C !important;
-}
-
-.options > li{
-  display: inline-block;
-  border: 1px solid rgb(198, 198, 198);
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
-  color: rgb(34, 34, 34);
+  white-space: nowrap;
+  vertical-align: middle;
   cursor: pointer;
-  font-size: 11px;
-  font-weight: bold;
-  height: 27px;
-  line-height: 27px;
-  min-width: 54px;
-  outline: medium none;
-  padding: 0px 8px;
-  text-align: center;
-  background: -moz-linear-gradient(center top , rgb(248, 248, 248), rgb(241, 241, 241)) repeat scroll 0% 0% rgb(248, 248, 248); 
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+       -o-user-select: none;
+          user-select: none;
+}
+
+.btn:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+.btn:hover,
+.btn:focus {
+  color: #333333;
+  text-decoration: none;
+}
+
+.btn:active,
+.btn.active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+          box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+
+.btn-default {
+  color: #333333;
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+
+.btn-default:hover,
+.btn-default:focus,
+.btn-default:active,
+.btn-default.active,
+.open .dropdown-toggle.btn-default {
+  color: #333333;
+  background-color: #ebebeb;
+  border-color: #adadad;
+}
+
+.btn-default:active,
+.btn-default.active,
+.open .dropdown-toggle.btn-default {
+  background-image: none;
 }

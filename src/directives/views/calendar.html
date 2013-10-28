@@ -1,63 +1,218 @@
 <div>
-  <div class='col-md-2'>
-    <span class='title'>Calendar</span>
-  </div>
-  <div class='col-md-5'>
-    <ul class='options no-list-style'>
-      <li >
-        Back
-      </li>
-      <li >
-        Forward
-      </li>
-      <li class='day'>
-        <span>September 25 2013</span>
-      </li>
+  <div class="cal-nav-outer">
+    <ul class="cal-nav">
+      <li class=" btn btn-default">Back</li>
+      <li class=" btn btn-default">Forward</li>
     </ul>
+    <h2 class="cal-nav"> September 25th 2013 </h2>      
+    <ul class="cal-nav">
+      <li class=" btn btn-default">Month</li>
+      <li class=" btn btn-default">Week</li>
+      <li class=" btn btn-default">Day</li>
+    </ul>    
   </div>
-  <div class='col-md-5'>
-    <ul class='options no_list_style '>
-      <li ng-class="{'active': day }" >
-        Day
-      </li ><li ng-class="{'active': week }" >
-        Week
-      </li><li ng-class="{'active': month }" >
-        Month
-      </li><li ng-class="{'active': agenda }" >
-        Agenda
-      </li><li ng-class="{'active': options }" >
-        Options
-      </li>
-    </ul>
-  </div>
-  <div class='header'>
-  </div>
-  <div class='calendar'>
-    <div class='col-md-2'>
-      <div></div>
-    </div>
-    <table class='col-md-9'>
-      <thead>
-        <tr>
-          <th colspan='5' class='cal-head'>Sunday Sept 25th</th>
+  <div class="cal-container">
+    <table class="cal-table">
+        <tr class="chunk underline ">
+          <th class="head "> 12am</th>
+          <td>ass</td>
         </tr>
-      </thead>
-      <tbody id="table{{hour}}hour" ng-repeat="hour in hours">
-        <tr class='hour'>
-          <th class="hour-label">{{hour}}am</th>
-          <td class='col-md-9' >
-            <table class='col-md-9'>
-              <tr  class='time-slot' ng-repeat="timeSlot in hourSlots" >
-                <td id="{{hour}}{{timeSlot}}"> {{event.title || "b"}} </td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>              
-            </table>
-          </td>
+        <tr class="chunk underline">
+          <th class="head "></th>
+          <td>AAAA</td>
+        </tr>                
+        <tr class="chunk underline ">
+          <th class="head "> 1am</th>
+          <td>ass</td>
         </tr>
-      </tbody>
+        <tr class="chunk underline">
+          <th class="head "></th>
+          <td>aa</td>
+        </tr>        
+
+        <tr class="chunk underline ">
+          <th class="head"> 2am</th>
+          <td>ass</td>
+        </tr>
+        <tr class="chunk underline">
+          <th class="head "></th>
+          <td>aa</td>
+        </tr>        
+
+        <tr class="chunk underline ">
+          <th class="head ">3am</th>
+          <td>ass</td>
+        </tr>
+        <tr class="chunk underline">
+          <th class="head "></th>
+          <td>aa</td>
+        </tr>        
+        <tr class="chunk underline ">
+          <th class="head "> 4am</th>
+          <td>ass</td>
+        </tr>
+        <tr class="chunk underline">
+          <th class="head "></th>
+          <td>aa</td>
+        </tr>                
+        <tr class="chunk underline ">
+          <th class="head ">5am</th>
+          <td>ass</td>
+        </tr>
+        <tr class="chunk underline">
+          <th class="head "></th>
+          <td>aa</td>
+        </tr>        
+
+        <tr class="chunk underline ">
+          <th class="head "> 6am</th>
+          <td>ass</td>
+        </tr>
+        <tr class="chunk underline">
+          <th class="head "></th>
+          <td>aa</td>
+        </tr>        
+
+        <tr class="chunk underline ">
+          <th class="head ">7am</th>
+          <td>ass</td>
+        </tr>
+        <tr class="chunk underline">
+          <th class="head "></th>
+          <td>aa</td>
+        </tr>
+                <tr class="chunk underline ">
+          <th class="head "> 8am</th>
+          <td>ass</td>
+        </tr>
+        <tr class="chunk underline">
+          <th class="head "></th>
+          <td>aa</td>
+        </tr>                
+        <tr class="chunk underline ">
+          <th class="head "> 9am</th>
+          <td>ass</td>
+        </tr>
+        <tr class="chunk underline">
+          <th class="head"></th>
+          <td>aa</td>
+        </tr>        
+
+        <tr class="chunk underline ">
+          <th class="head"> 10am</th>
+          <td>ass</td>
+        </tr>
+        <tr class="chunk underline">
+          <th class="head"></th>
+          <td>aa</td>
+        </tr>        
+
+        <tr class="chunk underline ">
+          <th class="head">11am</th>
+          <td>ass</td>
+        </tr>
+        <tr class="chunk underline">
+          <th class="head"></th>
+          <td>aa</td>
+        </tr>   
+                <tr class="chunk underline ">
+          <th class="head"> 12pm</th>
+          <td>ass</td>
+        </tr>
+        <tr class="chunk underline">
+          <th class="head"></th>
+          <td>aa</td>
+        </tr>                
+        <tr class="chunk underline ">
+          <th class="head"> 1pm</th>
+          <td>ass</td>
+        </tr>
+        <tr class="chunk underline">
+          <th class="head"></th>
+          <td>aa</td>
+        </tr>        
+
+        <tr class="chunk underline ">
+          <th class="head"> 2pm</th>
+          <td>ass</td>
+        </tr>
+        <tr class="chunk underline">
+          <th class="head"></th>
+          <td>aa</td>
+        </tr>        
+
+        <tr class="chunk underline ">
+          <th class="head">3pm</th>
+          <td>ass</td>
+        </tr>
+        <tr class="chunk underline">
+          <th class="head"></th>
+          <td>aa</td>
+        </tr>           
+        <tr class="chunk underline ">
+          <th class="head"> 4pm</th>
+          <td>ass</td>
+        </tr>
+        <tr class="chunk underline">
+          <th class="head"></th>
+          <td>aa</td>
+        </tr>                
+        <tr class="chunk underline ">
+          <th class="head"> 5pm</th>
+          <td>ass</td>
+        </tr>
+        <tr class="chunk underline">
+          <th class="head"></th>
+          <td>aa</td>
+        </tr>        
+
+        <tr class="chunk underline ">
+          <th class="head"> 6pm</th>
+          <td>ass</td>
+        </tr>
+        <tr class="chunk underline">
+          <th class="head"></th>
+          <td>aa</td>
+        </tr>        
+
+        <tr class="chunk underline ">
+          <th class="head">7pm</th>
+          <td>ass</td>
+        </tr>
+        <tr class="chunk underline">
+          <th class="head"></th>
+          <td>aa</td>
+        </tr>           
+        <tr class="chunk underline ">
+          <th class="head"> 8pm</th>
+          <td>ass</td>
+        </tr>
+        <tr class="chunk underline">
+          <th class="head"></th>
+          <td>aa</td>
+        </tr>                
+        <tr class="chunk underline ">
+          <th class="head"> 9pm</th>
+          <td>ass</td>
+        </tr>
+        <tr class="chunk underline">
+          <th class="head"></th>
+          <td>aa</td>
+        </tr>        
+
+        <tr class="chunk underline ">
+          <th class="head"> 10pm</th>
+          <td>ass</td>
+        </tr>
+        <tr class="chunk underline">
+          <th class="head"></th>
+          <td>aa</td>
+        </tr>        
+
+        <tr class="chunk underline ">
+          <th class="head">11pm</th>
+          <td>ass</td>        
+        </tr>
     </table>
   </div>
 </div>
-
