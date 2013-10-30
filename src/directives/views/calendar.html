@@ -13,206 +13,24 @@
   </div>
   <div class="cal-container">
     <table class="cal-table">
-        <tr class="chunk underline ">
-          <th class="head "> 12am</th>
-          <td>ass</td>
-        </tr>
-        <tr class="chunk underline">
-          <th class="head "></th>
-          <td>AAAA</td>
-        </tr>                
-        <tr class="chunk underline ">
-          <th class="head "> 1am</th>
-          <td>ass</td>
-        </tr>
-        <tr class="chunk underline">
-          <th class="head "></th>
-          <td>aa</td>
-        </tr>        
-
-        <tr class="chunk underline ">
-          <th class="head"> 2am</th>
-          <td>ass</td>
-        </tr>
-        <tr class="chunk underline">
-          <th class="head "></th>
-          <td>aa</td>
-        </tr>        
-
-        <tr class="chunk underline ">
-          <th class="head ">3am</th>
-          <td>ass</td>
-        </tr>
-        <tr class="chunk underline">
-          <th class="head "></th>
-          <td>aa</td>
-        </tr>        
-        <tr class="chunk underline ">
-          <th class="head "> 4am</th>
-          <td>ass</td>
-        </tr>
-        <tr class="chunk underline">
-          <th class="head "></th>
-          <td>aa</td>
-        </tr>                
-        <tr class="chunk underline ">
-          <th class="head ">5am</th>
-          <td>ass</td>
-        </tr>
-        <tr class="chunk underline">
-          <th class="head "></th>
-          <td>aa</td>
-        </tr>        
-
-        <tr class="chunk underline ">
-          <th class="head "> 6am</th>
-          <td>ass</td>
-        </tr>
-        <tr class="chunk underline">
-          <th class="head "></th>
-          <td>aa</td>
-        </tr>        
-
-        <tr class="chunk underline ">
-          <th class="head ">7am</th>
-          <td>ass</td>
-        </tr>
-        <tr class="chunk underline">
-          <th class="head "></th>
-          <td>aa</td>
-        </tr>
-                <tr class="chunk underline ">
-          <th class="head "> 8am</th>
-          <td>ass</td>
-        </tr>
-        <tr class="chunk underline">
-          <th class="head "></th>
-          <td>aa</td>
-        </tr>                
-        <tr class="chunk underline ">
-          <th class="head "> 9am</th>
-          <td>ass</td>
-        </tr>
-        <tr class="chunk underline">
-          <th class="head"></th>
-          <td>aa</td>
-        </tr>        
-
-        <tr class="chunk underline ">
-          <th class="head"> 10am</th>
-          <td>ass</td>
-        </tr>
-        <tr class="chunk underline">
-          <th class="head"></th>
-          <td>aa</td>
-        </tr>        
-
-        <tr class="chunk underline ">
-          <th class="head">11am</th>
-          <td>ass</td>
-        </tr>
-        <tr class="chunk underline">
-          <th class="head"></th>
-          <td>aa</td>
-        </tr>   
-                <tr class="chunk underline ">
-          <th class="head"> 12pm</th>
-          <td>ass</td>
-        </tr>
-        <tr class="chunk underline">
-          <th class="head"></th>
-          <td>aa</td>
-        </tr>                
-        <tr class="chunk underline ">
-          <th class="head"> 1pm</th>
-          <td>ass</td>
-        </tr>
-        <tr class="chunk underline">
-          <th class="head"></th>
-          <td>aa</td>
-        </tr>        
-
-        <tr class="chunk underline ">
-          <th class="head"> 2pm</th>
-          <td>ass</td>
-        </tr>
-        <tr class="chunk underline">
-          <th class="head"></th>
-          <td>aa</td>
-        </tr>        
-
-        <tr class="chunk underline ">
-          <th class="head">3pm</th>
-          <td>ass</td>
-        </tr>
-        <tr class="chunk underline">
-          <th class="head"></th>
-          <td>aa</td>
-        </tr>           
-        <tr class="chunk underline ">
-          <th class="head"> 4pm</th>
-          <td>ass</td>
-        </tr>
-        <tr class="chunk underline">
-          <th class="head"></th>
-          <td>aa</td>
-        </tr>                
-        <tr class="chunk underline ">
-          <th class="head"> 5pm</th>
-          <td>ass</td>
-        </tr>
-        <tr class="chunk underline">
-          <th class="head"></th>
-          <td>aa</td>
-        </tr>        
-
-        <tr class="chunk underline ">
-          <th class="head"> 6pm</th>
-          <td>ass</td>
-        </tr>
-        <tr class="chunk underline">
-          <th class="head"></th>
-          <td>aa</td>
-        </tr>        
-
-        <tr class="chunk underline ">
-          <th class="head">7pm</th>
-          <td>ass</td>
-        </tr>
-        <tr class="chunk underline">
-          <th class="head"></th>
-          <td>aa</td>
-        </tr>           
-        <tr class="chunk underline ">
-          <th class="head"> 8pm</th>
-          <td>ass</td>
-        </tr>
-        <tr class="chunk underline">
-          <th class="head"></th>
-          <td>aa</td>
-        </tr>                
-        <tr class="chunk underline ">
-          <th class="head"> 9pm</th>
-          <td>ass</td>
-        </tr>
-        <tr class="chunk underline">
-          <th class="head"></th>
-          <td>aa</td>
-        </tr>        
-
-        <tr class="chunk underline ">
-          <th class="head"> 10pm</th>
-          <td>ass</td>
-        </tr>
-        <tr class="chunk underline">
-          <th class="head"></th>
-          <td>aa</td>
-        </tr>        
-
-        <tr class="chunk underline ">
-          <th class="head">11pm</th>
-          <td>ass</td>        
-        </tr>
+      <tr ng-repeat="halfHour in hours" class="chunk underline ">
+        <th class="head ">{{halfHour}}</th>
+        <td></td>
+      </tr>
     </table>
   </div>
 </div>
+
+
+puts "Text to search through:"
+redact = gets.chomp
+
+words = text.split(" ")
+
+
+words.each do |word|
+   if word != redact
+   print word + " "
+else print "REDACTED!"
+end
+end
