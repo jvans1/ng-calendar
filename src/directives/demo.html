@@ -5,15 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Calendar Demo</title>
     <link rel="stylesheet" href="../css/calendar.css">
-
+    <script src="./calHelper.js"></script>
     <script src="./angular.js"></script>
+    <script src="./finderHelper.js"></script>
+    <script src="./eventHelper.js"></script>
     <script src="./calendar.js"></script>
     <script src="./calEvent.js"></script>
     <script src="./calendarDemo.js"></script>
+
 </head>
 <body ng-app="calendarDemo" ng-controller="appCtrl">
 <div class="container" ng-view=""></div>
-  <calendar></calendar>
+  <calendar events='events'></calendar>
 </body>
 </html>
  

@@ -16,10 +16,24 @@
 .chunk{
   margin: 0 !important;
   border-bottom: 1px solid gray;  
-  
+  max-height: 40px !important;
   height: 40px;
   width: 990px;
 }
+/* Event Directive */
+.event-content{
+  margin: 0;
+  padding: 0;
+}
+
+.event-container{
+  /*like */
+  border: solid 1px #DB7972;
+  background-color: #F0D0CE;
+  color :#777777;
+}
+/* End Event Directive */
+
 .block {
   display: block;
 }
@@ -31,6 +45,7 @@
 
 .cal-table{
   width: 100%;
+  position: relative;
   border-collapse: collapse;
 }
 .full{

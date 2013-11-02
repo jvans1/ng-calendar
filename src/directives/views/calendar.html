@@ -13,24 +13,10 @@
   </div>
   <div class="cal-container">
     <table class="cal-table">
-      <tr ng-repeat="halfHour in hours" class="chunk underline ">
+      <tr ng-repeat="halfHour in hours" class="chunk" id="hour{{halfHour}}">
         <th class="head ">{{halfHour}}</th>
         <td></td>
       </tr>
     </table>
   </div>
 </div>
-
-
-puts "Text to search through:"
-redact = gets.chomp
-
-words = text.split(" ")
-
-
-words.each do |word|
-   if word != redact
-   print word + " "
-else print "REDACTED!"
-end
-end
