@@ -42,12 +42,14 @@
   width: 50px;
   border-right: 1px solid gray;
 }
-
 .cal-table{
   width: 100%;
-  position: relative;
   border-collapse: collapse;
 }
+
+#cal-table{
+}
+
 .full{
   width: 100%;
   display: block;
