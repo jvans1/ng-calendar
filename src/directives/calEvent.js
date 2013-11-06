@@ -4,7 +4,8 @@ calendar.directive('calEvent',   function(){
       restrict: 'E',
       scope: {
         source: '=',
-        action: '&'
+        action: '&',
+        eventStyle: '@'
       },
       replace: true,
       templateUrl: './views/cal_event.html'

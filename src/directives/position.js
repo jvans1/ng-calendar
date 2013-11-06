@@ -32,6 +32,7 @@ cal.position = (function(){
     var id = "hour" + normalizeTime
     var el = cal.findEventNode(id)
     var rectangle = el.getBoundingClientRect() || {  };
+    console.log(rectangle.top)
     return { x: rectangle.left, y: rectangle.top }
   }
   return positionObject

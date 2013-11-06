@@ -27,8 +27,10 @@ var calendar = angular.module('ng.calendar', [])
         cal.event.setScope(scope)
         $timeout(function(){
           angular.forEach(scope.events, function(calEvent){
-            var el = cal.event.addToPage(calEvent)
-            $compile(el)(scope)
+            var eventNode = cal.event.configure(calEvent);
+            var table = angular.element(cal.findTableContainer());
+            var result = $compile(eventNode)(scope)
+            table.prepend(result)
           });
         }, 0)
         scope.events

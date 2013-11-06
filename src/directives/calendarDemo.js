@@ -6,17 +6,17 @@ angular.module("calendarDemo", ['ng.calendar']).controller('appCtrl',[ '$scope',
 
   $scope.events = [
     {
-      startTime: '17:56:04',
+      startTime: '16:00:04',
       title: 'Booty call',
     },
     {
-      startTime: '18:12:04',
+      startTime: '18:00:04',
       title: 'dinner',
     },
-    {
-      startTime: '18:35:04',
-      title: 'kickball'
-    }
+    // {
+    //   startTime: '18:35:04',
+    //   title: 'kickball'
+    // }
   ]
 
   $scope.alertMe = function(event){
