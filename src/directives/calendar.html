@@ -1,0 +1,44 @@
+<div>
+  <div class="cal-nav-outer">
+    <ul class="cal-nav">
+      <li class=" btn btn-default">Back</li>
+      <li class=" btn btn-default">Forward</li>
+    </ul>
+    <h2 class="cal-nav"> September 25th 2013 </h2>      
+    <ul class="cal-nav">
+      <li class=" btn btn-default">Month</li>
+      <li class=" btn btn-default">Week</li>
+      <li class=" btn btn-default">Day</li>
+    </ul>    
+  </div>
+  <div class="cal-container">
+    <table class="cal-table" cellspacing="0" cellpadding="0">
+      <tbody>
+        <tr height="1">
+          <td width="60px"></td>
+          <td colspan="1" >
+            <div class="mc-container">
+              <div class="marker-container">
+                <div ng-repeat="hour in hours" class="hour">
+                  <div class="split"></div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="cal-time-labels">
+            <div ng-repeat="hour in hours" class="time-container" id="{{timeToId(hour)}}">
+              {{hour}}
+            </div>
+          </td>
+          <td class="cal-viewable">
+            <div class="event-marker-container">
+              <div class="test-event"></div>
+            </div>
+          </td> 
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

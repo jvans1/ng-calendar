@@ -8,7 +8,7 @@ calendar.directive('calEvent',   function(){
         eventStyle: '@'
       },
       replace: true,
-      templateUrl: './views/cal_event.html'
+      templateUrl: 'cal_event.html'
     };
   }
 );
