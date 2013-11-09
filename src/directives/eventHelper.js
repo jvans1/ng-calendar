@@ -18,8 +18,7 @@ cal.event = (function(){
   eventObject.configure = function(calEvent){
     privateMembers.eventCount ++
     var offset = cal.position.computeDayEventOffset(calEvent.startTime)
-    alert(offset.y)
-    var style = "height: 70px;width: 90%;position: relative;left: 50px;background: red;top:" + offset.y  + "px ;"
+    var style = "height: 45px;width: 100%;position: absolute; background: yellow;top:" + offset.y  + "px ;"
     var variable = privateMembers.bindToScope(calEvent);
     var eventNode = "<cal-event action=\"eventClick({event: event})\"  source=" + variable  + " event-style=\"" + style + "\" ></cal-event>" 
     return eventNode 

@@ -31,9 +31,10 @@ cal.position = (function(){
     var normalizeTime = privateMembers.normalizeTime(time)
     var id = "hour" + normalizeTime
     var el = cal.findEventNode(id)
-    var rectangle = el.getBoundingClientRect() || {  };
-    console.log(rectangle.top)
-    return { x: rectangle.left, y: rectangle.top }
+    var table = cal.findTableNode();
+    var tableOffset = table.getBoundingClientRect();
+    var rectangle = el.getBoundingClientRect();
+    return { x: rectangle.left, y: rectangle.top - tableOffset.top }
   }
   return positionObject
 })();

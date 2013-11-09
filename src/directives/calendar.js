@@ -12,7 +12,8 @@ var calendar = angular.module('ng.calendar', [])
       templateUrl: "calendar.html",
       controller: function($scope){
         $scope.timeToId = function(time){
-          return time.replace(":", "")
+          var newTime = time.replace(":", "")
+          return "hour" + newTime
         }
         $scope.day = true;
         
@@ -31,9 +32,9 @@ var calendar = angular.module('ng.calendar', [])
         $timeout(function(){
           angular.forEach(scope.events, function(calEvent){
             var eventNode = cal.event.configure(calEvent);
-            var table = angular.element(cal.findTableContainer());
             var result = $compile(eventNode)(scope)
-            table.prepend(result)
+            var eventContainer = angular.element(cal.findEventContainer());
+            eventContainer.prepend(result)
           });
         }, 0)
         scope.events

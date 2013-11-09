@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/calendar.css">
     <script src="./calHelper.js"></script>
     <script src="./angular.js"></script>
-    <script src="./finderHelper.js"></script>
+    <script src="./find.js"></script>
      <script src="./position.js"></script>
      <script src="./eventHelper.js"></script>
      <script src="./calendar.js"></script>
@@ -17,7 +17,7 @@
 </head>
 <body ng-app="calendarDemo" ng-controller="appCtrl">
 <div class="container" ng-view=""></div>
-  <calendar events='events'></calendar>
+  <calendar events='events' event-click="alertIt(event)"></calendar>
 </body>
 </html>
  

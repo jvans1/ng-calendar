@@ -31,17 +31,10 @@
   vertical-align: top;
 }
 
-.event-marker-container{
+.events-container{
   position: relative;
   height: 1100px;
   margin-bottom: -1100px;
-}
-
-.test-event{
-  position: absolute;
-  top: 100px;
-  width: 100px;
-  color: black;
 }
 
 .marker-container{
@@ -70,8 +63,6 @@
 .event-container{
   /*like */
   border: solid 1px #DB7972;
-  background-color: #F0D0CE;
-  color: #777777;
   opacity: .8;
 }
 /* End Event Directive */
