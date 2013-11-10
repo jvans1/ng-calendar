@@ -11,7 +11,7 @@
       <li class=" btn btn-default">Day</li>
     </ul>    
   </div>
-  <div class="cal-container">
+  <div class="cal-container"  style="{{calHeight()}}">
     <table class="cal-table" cellspacing="0" cellpadding="0">
       <tbody>
         <tr height="1">
@@ -19,8 +19,8 @@
           <td colspan="1" >
             <div class="mc-container">
               <div class="marker-container">
-                <div ng-repeat="hour in hours" class="hour">
-                  <div class="split"></div>
+                <div ng-repeat="hour in hours" class="hour"  style="{{hourHeight()}}">
+                  <div ng-repeat="divider in dividerRepeat()" class="split" style="{{dividerHeight()}}"></div>
                 </div>
               </div>
             </div>
@@ -28,7 +28,7 @@
         </tr>
         <tr>
           <td class="cal-time-labels">
-            <div ng-repeat="hour in hours" class="time-container" id="{{timeToId(hour)}}">
+            <div ng-repeat="hour in hours" class="time-container" id="{{timeToId(hour)}}" style="{{hourHeight()}}">
               {{hour}}
             </div>
           </td>

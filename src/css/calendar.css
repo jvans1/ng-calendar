@@ -13,18 +13,15 @@
 }
 
 .cal-table{
-  height: 1000px;
   background: #DEDEDE;
   width: 100%;
 }
 
 .hour{
-  height: 45px;
   border: 1px solid black;
   border-top: none;
 }
 .split{
-  height: 22px;
   border-bottom: 1px dashed black;
 }
 

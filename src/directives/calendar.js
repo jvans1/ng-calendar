@@ -11,9 +11,27 @@ var calendar = angular.module('ng.calendar', [])
       replace: true,
       templateUrl: "calendar.html",
       controller: function($scope){
+        cal.configuration.userOptions = $scope.options
+        var options = cal.configuration
         $scope.timeToId = function(time){
           var newTime = time.replace(":", "")
           return "hour" + newTime
+        }
+
+        $scope.dividerHeight = function(){
+          return "height: " + options.cellHeightToInt() + "px;"
+        }
+
+        $scope.calHeight = function(){
+          return "height: " + options.getCalendarHeight()
+        }
+
+        $scope.dividerRepeat = function(){
+          var dividerCount = options.getHourSlots() - 1 
+          return new Array(dividerCount)
+        }
+        $scope.hourHeight = function(){
+          return "height: " + options.cellHeightToInt() * options.getHourSlots() + "px;"
         }
         $scope.day = true;
         
@@ -27,7 +45,6 @@ var calendar = angular.module('ng.calendar', [])
         $scope.month = false;
       },
       link: function(scope, elem, attrs, ctrl){
-        cal.configuration.userOptions = scope.options
         cal.event.setScope(scope)
         $timeout(function(){
           angular.forEach(scope.events, function(calEvent){
@@ -35,9 +52,8 @@ var calendar = angular.module('ng.calendar', [])
             var result = $compile(eventNode)(scope)
             var eventContainer = angular.element(cal.findEventContainer());
             eventContainer.prepend(result)
-          });
-        }, 0)
-        scope.events
+          });          
+        })
       }
     }
   }]);

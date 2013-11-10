@@ -11,9 +11,8 @@ cal.event = (function(){
       return 'calEvent' + this.eventCount
     },
     eventHeight: function(){
-      var cellHeight = cal.configuration.getOptions()["cellHeight"]
       var hourSlots = cal.configuration.getOptions()["hourSlots"]
-      return cellHeight * hourSlots
+      return 20 * hourSlots
     }
   }
 
