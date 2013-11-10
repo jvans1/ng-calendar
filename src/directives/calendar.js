@@ -5,7 +5,7 @@ var calendar = angular.module('ng.calendar', [])
       restrict: "E",
       scope: {
         events: '=',
-        calOptions: '=',
+        options: '=',
         eventClick: '&'
       },
       replace: true,
@@ -25,9 +25,9 @@ var calendar = angular.module('ng.calendar', [])
         $scope.week = false;
         $scope.agenda = false;
         $scope.month = false;
-        $scope.options = false;
       },
       link: function(scope, elem, attrs, ctrl){
+        cal.configuration.userOptions = scope.options
         cal.event.setScope(scope)
         $timeout(function(){
           angular.forEach(scope.events, function(calEvent){

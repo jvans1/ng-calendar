@@ -1,5 +1,6 @@
 .cal-container{
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   border: 1px solid black;
 }
 

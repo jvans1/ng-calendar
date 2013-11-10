@@ -7,17 +7,19 @@
     <link rel="stylesheet" href="../css/calendar.css">
     <script src="./calHelper.js"></script>
     <script src="./angular.js"></script>
+    <script src="./extensions.js"></script>
+    <script src="./configuration.js"></script>
     <script src="./find.js"></script>
-     <script src="./position.js"></script>
-     <script src="./eventHelper.js"></script>
-     <script src="./calendar.js"></script>
-     <script src="./calEvent.js"></script>
-     <script src="./calendarDemo.js"></script>
-
+    <script src="./position.js"></script>
+    <script src="./extensions.js"></script>
+    <script src="./eventHelper.js"></script>
+    <script src="./calendar.js"></script>
+    <script src="./calEvent.js"></script>
+    <script src="./calendarDemo.js"></script>
 </head>
 <body ng-app="calendarDemo" ng-controller="appCtrl">
 <div class="container" ng-view=""></div>
-  <calendar events='events' event-click="alertIt(event)"></calendar>
+  <calendar events='events' event-click="alertIt(event)" options='calOptions'></calendar>
 </body>
 </html>
  

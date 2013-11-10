@@ -1,7 +1,7 @@
 angular.module("calendarDemo", ['ng.calendar']).controller('appCtrl',[ '$scope', function($scope){
   $scope.ballsack = "Balls!"
   $scope.calOptions = {
-    hourDivide: 30,
+    hourSlots: 3,
   }
   $scope.alertIt = function(event){
     console.log(event)
@@ -20,7 +20,4 @@ angular.module("calendarDemo", ['ng.calendar']).controller('appCtrl',[ '$scope',
       title: 'kickball'
     }
   ]
-
-  $scope.alertMe = function(event){
-  }
 }])
