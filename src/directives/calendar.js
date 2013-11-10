@@ -1,6 +1,6 @@
 'use strict';
 var calendar = angular.module('ng.calendar', [])
-  .directive("calendar", [ '$timeout',  '$compile', function($timeout, $compile){
+  .directive("calendar", [ '$timeout',  '$compile', 'eventsService', function($timeout, $compile, eventsService){
     return {
       restrict: "E",
       scope: {
@@ -17,9 +17,11 @@ var calendar = angular.module('ng.calendar', [])
           var newTime = time.replace(":", "")
           return "hour" + newTime
         }
-
         $scope.dividerHeight = function(){
           return "height: " + options.cellHeightToInt() + "px;"
+        }
+        $scope.addEvents = function(calEvents){
+          eventsService.addEventsToCalender($scope, calEvents)
         }
 
         $scope.calHeight = function(){
@@ -28,7 +30,7 @@ var calendar = angular.module('ng.calendar', [])
 
         $scope.dividerRepeat = function(){
           var dividerCount = options.getHourSlots() - 1 
-          return new Array(dividerCount)
+          return [0,1,2,3]
         }
         $scope.hourHeight = function(){
           return "height: " + options.cellHeightToInt() * options.getHourSlots() + "px;"
@@ -45,14 +47,15 @@ var calendar = angular.module('ng.calendar', [])
         $scope.month = false;
       },
       link: function(scope, elem, attrs, ctrl){
-        cal.event.setScope(scope)
         $timeout(function(){
-          angular.forEach(scope.events, function(calEvent){
-            var eventNode = cal.event.configure(calEvent);
-            var result = $compile(eventNode)(scope)
+          scope.addEvents(scope.events)
+          var eventsOnCalendar = eventsService.getCalendarEvents();
+          for (var i = eventsOnCalendar.length - 1; i >= 0; i--) {
+            var eventNode = eventsOnCalendar[i].htmlNode
+            var compiledNode = $compile(eventNode)(scope)
             var eventContainer = angular.element(cal.findEventContainer());
-            eventContainer.prepend(result)
-          });          
+            eventContainer.prepend(compiledNode)
+          };
         })
       }
     }

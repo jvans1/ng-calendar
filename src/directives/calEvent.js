@@ -5,10 +5,11 @@ calendar.directive('calEvent',   function(){
       scope: {
         source: '=',
         action: '&',
-        eventStyle: '@'
+        locationClass: '@',
+        eventCount: '@',
       },
       replace: true,
-      templateUrl: 'cal_event.html'
+      templateUrl: './cal_event.html',
     };
   }
 );

@@ -1,4 +1,4 @@
-<div style="{{eventStyle}}" class="event-container" ng-click="action({ event: source})">
+<div id="{{eventCount}}"  class="event-container {{locationClass}}" ng-click="action({ event: source})">
   <div>
     <p class="event-content">{{source.title || 'title'}}: {{source.startTime}} Balls</p>
   </div>

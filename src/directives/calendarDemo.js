@@ -8,16 +8,16 @@ angular.module("calendarDemo", ['ng.calendar']).controller('appCtrl',[ '$scope',
   }
   $scope.events = [
     {
-      startTime: '16:00:04',
+      startTime: '14:00:04',
       title: 'Booty call',
     },
     {
-      startTime: '14:00:04',
+      startTime: '14:04:04',
       title: 'dinner',
     },
-    {
-      startTime: '18:35:04',
-      title: 'kickball'
-    }
+    // {
+    //   startTime: '18:35:04',
+    //   title: 'kickball'
+    // }
   ]
 }])

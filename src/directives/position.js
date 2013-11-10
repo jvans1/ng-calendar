@@ -1,6 +1,7 @@
 cal.position = (function(){
   var positionObject = {};
   var privateScope = {
+    nodeId: undefined,
     times: [],
     roundMinutes: function(minutes){
       var roundedTime = this.times[0]
@@ -25,16 +26,37 @@ cal.position = (function(){
         return "0000"
       }
     },
+    setNodeId: function(time){
+      var normalizeTime = privateScope.normalizeTime(time)
+      this.nodeId = "hour" + normalizeTime
+      return this.nodeId
+    },
+    overLappingEvents: function(){
+
+    },
+
+    xOffset: function(){
+      var events = cal.eventsInNode(this.nodeId)
+
+      return "123"
+    }
   };
 
-  positionObject.dayEventOffset = function(time){
-    var normalizeTime = privateScope.normalizeTime(time)
-    var id = "hour" + normalizeTime
-    var el = cal.findEventNode(id)
+
+//This feels wrong, it relies on dayEventOffset having been called first which is an
+//assumption that doens' tfeel  right
+  positionObject.getNodeId = function(){
+    return privateScope.nodeId
+  }
+
+  positionObject.dayEventOffset = function(event){
+    var time = event.startTime
+    privateScope.setNodeId(time);
+    var eventContainingNode = cal.findDivById(privateScope.nodeId)
     var table = cal.findTableNode();
     var tableOffset = table.getBoundingClientRect();
-    var rectangle = el.getBoundingClientRect();
-    return { x: rectangle.left, y: rectangle.top - tableOffset.top }
+    var rectangle = eventContainingNode.getBoundingClientRect();
+    return { left: privateScope.xOffset(), top: rectangle.top - tableOffset.top }
   }
   return positionObject
 })();
