@@ -7,11 +7,11 @@ calendar.factory("eventsService", [ '$compile', '$timeout', function($compile, $
   var eventCount = 0
 
   function bindToScope(scope, calEvent){
-    eval('scope.' + eventVariable() + '=calEvent') 
+    eval('scope.' + eventVariable(calEvent) + '=calEvent') 
     return true
   }
-  function eventVariable(){
-      return 'calEvent' + eventCount
+  function eventVariable(calEvent){
+      return 'calEvent' + calEvent.elemId
   }
   function eventHeight(){
       var hourSlots = cal.configuration.getOptions()["hourSlots"]
@@ -21,12 +21,14 @@ calendar.factory("eventsService", [ '$compile', '$timeout', function($compile, $
     return " ;"
   }
   var configure = function(scope, calEvent, eventsSharingRow, index){
+    eventCount ++
+    calEvent.elemId = eventCount
     widthPerEvent = 100.0 / eventsSharingRow 
     var yOffset = cal.position.dayEventOffset(calEvent).top
     var style = "height: " + eventHeight() + "px; position: absolute;background: yellow;top:" + yOffset + "px; left: " + widthPerEvent * index + "%; " ;
     style += "width: " + widthPerEvent + "%;"
     bindToScope(scope, calEvent);
-    var variable = eventVariable()
+    var variable = eventVariable(calEvent)
     var eventNode = "<cal-event event-count= " + calEvent.elemId +  " location-class=" + cal.position.getNodeId() + " action=\"eventClick({event: event})\"  source=" + variable + " style=\"" + style + "\" ></cal-event>" 
     return eventNode 
   }
@@ -43,27 +45,30 @@ calendar.factory("eventsService", [ '$compile', '$timeout', function($compile, $
     };
     return eventsInSpace
   }
+  function removeEventFromQueue(calEvent){
+    angular.forEach(eventsOnCalendar, function(calEventOnCalendar, index){
+        console.log(calEventOnCalendar.startTime)
+        console.log(calEvent.startTime)
+      if(calEventOnCalendar.startTime == calEvent.startTime && calEventOnCalendar.title == calEvent.title ) {
+        eventsOnCalendar.splice(index,1);
+        return false;
+      }
+    }); 
+  }
+  function addEventToCalendar(scope, calEvent){
+    var eventsInSpace = sharedSpace(calEvent)
+    for (var e = eventsInSpace.length - 1; e >= 0; e --) {
+      removeEventFromQueue( eventsInSpace[e] )         
+      eventsInSpace[e].htmlNode = configure(scope, eventsInSpace[e], eventsInSpace.length, e)
+      eventsOnCalendar.push(eventsInSpace[e])
+      console.log(eventsOnCalendar.length)
+    }
+  }
 
   return { 
     addEventsToCalender: function(scope, calEvents){
       for (var i = calEvents.length - 1; i >= 0; i--) {
-        eventCount ++ 
-        var calEvent = calEvents[i]
-        var eventsInSpace = sharedSpace(calEvent)
-        console.log("really")
-        for (var e = eventsInSpace.length - 1; e >= 0; e --) {
-          angular.forEach(eventsOnCalendar, function(calEvent, index){
-            // if(calEvent.startTime == eventsInSpace[i].startTime && calEvent.startTime.title == eventsInSpace[i].title ) {
-            //   console.log("removing itmem")
-            //   eventsOnCalendar.splice(index,1);
-            //   return false;
-            // }
-          });          
-          eventsInSpace[e].htmlNode = configure(scope, eventsInSpace[e], eventsInSpace.length, e)
-          eventsOnCalendar.push(eventsInSpace[e])
-          console.log("Eis: ", e)
-          console.log(eventsOnCalendar.length)
-        }
+        addEventToCalendar(scope, calEvents[i])
       }
     },
     getCalendarEvents: function(){

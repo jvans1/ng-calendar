@@ -15,9 +15,9 @@ angular.module("calendarDemo", ['ng.calendar']).controller('appCtrl',[ '$scope',
       startTime: '14:04:04',
       title: 'dinner',
     },
-    // {
-    //   startTime: '18:35:04',
-    //   title: 'kickball'
-    // }
+    {
+      startTime: '14:25:04',
+      title: 'kickball'
+    }
   ]
 }])
