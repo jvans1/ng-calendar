@@ -1,12 +1,14 @@
 cal.event = (function(){
   var eventObject = {};
-  var privateMembers = {
+  var privateScope = {
     scope: null,
     eventCount: 0,
     bindToScope: function(calEvent){
-      var variable = 'calEvent' + this.eventCount
-      eval('this.scope.' + variable + '=calEvent') 
-      return variable
+      eval('this.scope.' + this.eventVariable() + '=calEvent') 
+      return true
+    },
+    eventVariable: function(){
+      return 'calEvent' + this.eventCount
     },
     eventHeight: function(){
       var cellHeight = cal.configuration.getOptions()["cellHeight"]
@@ -16,16 +18,17 @@ cal.event = (function(){
   }
 
   eventObject.setScope = function(scope){
-    privateMembers.scope = scope
+    privateScope.scope = scope
     return scope
   }
 
   eventObject.configure = function(calEvent){
-    privateMembers.eventCount ++
-    var offset = cal.position.computeDayEventOffset(calEvent.startTime)
-    var style = "height: " + privateMembers.eventHeight() + "px; width: 100%;position: absolute;background: yellow;top:" + offset.y  + "px ;"
-    var variable = privateMembers.bindToScope(calEvent);
-    var eventNode = "<cal-event action=\"eventClick({event: event})\"  source=" + variable  + " event-style=\"" + style + "\" ></cal-event>" 
+    privateScope.eventCount ++
+    var yOffset = cal.position.dayEventOffset(calEvent.startTime).y
+    var style = "height: " + privateScope.eventHeight() + "px; width: 100%;position: absolute;background: yellow;top:" + yOffset + "px ;"
+    privateScope.bindToScope(calEvent);
+    var eventVariable = privateScope.eventVariable();
+    var eventNode = "<cal-event action=\"eventClick({event: event})\"  source=" + eventVariable  + " event-style=\"" + style + "\" ></cal-event>" 
     return eventNode 
   }
   return eventObject

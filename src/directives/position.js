@@ -1,6 +1,6 @@
 cal.position = (function(){
   var positionObject = {};
-  var privateMembers = {
+  var privateScope = {
     times: [],
     roundMinutes: function(minutes){
       var roundedTime = this.times[0]
@@ -27,8 +27,8 @@ cal.position = (function(){
     },
   };
 
-  positionObject.computeDayEventOffset = function(time){
-    var normalizeTime = privateMembers.normalizeTime(time)
+  positionObject.dayEventOffset = function(time){
+    var normalizeTime = privateScope.normalizeTime(time)
     var id = "hour" + normalizeTime
     var el = cal.findEventNode(id)
     var table = cal.findTableNode();
