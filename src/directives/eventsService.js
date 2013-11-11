@@ -1,4 +1,4 @@
-calendar.factory("eventsService", [ '$compile', '$timeout', function($compile, $timeout){
+calendar.factory("eventsService", [ function(){
   //Store events on calendar in array
   //when add another event check to see if overflops coordinates from pervious events
   //If yes, rerender all matching events
@@ -7,15 +7,15 @@ calendar.factory("eventsService", [ '$compile', '$timeout', function($compile, $
   var eventCount = 0
 
   function bindToScope(scope, calEvent){
-    eval('scope.' + eventVariable(calEvent) + '=calEvent') 
+    eval('scope.' + eventVariable() + '=calEvent') 
     return true
   }
-  function eventVariable(calEvent){
-      return 'calEvent' + calEvent.elemId
+  function eventVariable(){
+    return 'calEvent' + eventCount
   }
   function eventHeight(){
-      var hourSlots = cal.configuration.getOptions()["hourSlots"]
-      return 20 * hourSlots
+    var hourSlots = cal.configuration.getOptions()["hourSlots"]
+    return 20 * hourSlots
   }
   function offsetX(){
     return " ;"
@@ -28,8 +28,8 @@ calendar.factory("eventsService", [ '$compile', '$timeout', function($compile, $
     var style = "height: " + eventHeight() + "px; position: absolute;background: yellow;top:" + yOffset + "px; left: " + widthPerEvent * index + "%; " ;
     style += "width: " + widthPerEvent + "%;"
     bindToScope(scope, calEvent);
-    var variable = eventVariable(calEvent)
-    var eventNode = "<cal-event event-count= " + calEvent.elemId +  " location-class=" + cal.position.getNodeId() + " action=\"eventClick({event: event})\"  source=" + variable + " style=\"" + style + "\" ></cal-event>" 
+    var variable = eventVariable()
+    var eventNode = "<cal-event event-count=\"" + calEvent.elemId +  "\" location-class=\"" + cal.position.getNodeId() + "\" action=\"eventClick({event: event})\"  source=\"" + variable + "\" style=\"" + style + "\" ></cal-event>" 
     return eventNode 
   }
 
@@ -47,31 +47,33 @@ calendar.factory("eventsService", [ '$compile', '$timeout', function($compile, $
   }
   function removeEventFromQueue(calEvent){
     angular.forEach(eventsOnCalendar, function(calEventOnCalendar, index){
-        console.log(calEventOnCalendar.startTime)
-        console.log(calEvent.startTime)
       if(calEventOnCalendar.startTime == calEvent.startTime && calEventOnCalendar.title == calEvent.title ) {
         eventsOnCalendar.splice(index,1);
         return false;
       }
     }); 
   }
-  function addEventToCalendar(scope, calEvent){
+  function addEventToQueue(scope, calEvent){
+    // find all events that are going to overlap this events space
     var eventsInSpace = sharedSpace(calEvent)
     for (var e = eventsInSpace.length - 1; e >= 0; e --) {
-      removeEventFromQueue( eventsInSpace[e] )         
-      eventsInSpace[e].htmlNode = configure(scope, eventsInSpace[e], eventsInSpace.length, e)
-      eventsOnCalendar.push(eventsInSpace[e])
-      console.log(eventsOnCalendar.length)
+      var eventToAdd = eventsInSpace[e]
+      //remove the previous configuration from the queue if it's already there
+      removeEventFromQueue( eventToAdd )         
+      //reconfigure or configure html node and assign it to the object
+      eventToAdd.htmlNode = configure(scope, eventToAdd, eventsInSpace.length, e)
+      //add event object to queue
+      eventsOnCalendar.push(eventToAdd)
     }
   }
 
   return { 
-    addEventsToCalender: function(scope, calEvents){
+    addEventsToQueue: function(scope, calEvents){
       for (var i = calEvents.length - 1; i >= 0; i--) {
-        addEventToCalendar(scope, calEvents[i])
+        addEventToQueue(scope, calEvents[i])
       }
     },
-    getCalendarEvents: function(){
+    getCalendarEventQueue: function(){
       return eventsOnCalendar
     }
   }

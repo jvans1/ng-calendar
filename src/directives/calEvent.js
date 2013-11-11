@@ -9,7 +9,11 @@ calendar.directive('calEvent',   function(){
         eventCount: '@',
       },
       replace: true,
-      templateUrl: './cal_event.html',
+      template: "<h1 class=\"tit\">balls</h1>", //'./cal_event.html',
+      link: function(){
+        alert("Balls")
+
+      }
     };
   }
 );

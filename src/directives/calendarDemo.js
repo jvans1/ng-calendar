@@ -1,10 +1,9 @@
 angular.module("calendarDemo", ['ng.calendar']).controller('appCtrl',[ '$scope', function($scope){
   $scope.ballsack = "Balls!"
   $scope.calOptions = {
-    hourSlots: 5,
+    hourSlots: 4,
   }
   $scope.alertIt = function(event){
-    console.log(event)
   }
   $scope.events = [
     {

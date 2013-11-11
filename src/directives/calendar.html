@@ -11,6 +11,14 @@
       <li class=" btn btn-default">Day</li>
     </ul>    
   </div>
+<!--   <form>
+    <input type="text" ng-model="newEvent.title" placeholder="Event Title">
+    <input type="text" ng-model="newEvent.startTime" placeholder="Event start time">
+    <div> {{newEvent}} </div>
+    <button ng-submit="addEvent()">Add</button>
+
+  </form>
+ -->
   <div class="cal-container"  style="{{calHeight()}}">
     <table class="cal-table" cellspacing="0" cellpadding="0">
       <tbody>
@@ -33,7 +41,7 @@
             </div>
           </td>
           <td class="cal-viewable">
-            <div class="events-container">
+            <div style="{{eventContainerStyle()}}">
               <div class="test-event"></div>
             </div>
           </td> 

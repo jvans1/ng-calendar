@@ -20,8 +20,16 @@ var calendar = angular.module('ng.calendar', [])
         $scope.dividerHeight = function(){
           return "height: " + options.cellHeightToInt() + "px;"
         }
+        // $scope.newEvent = { }
+        // $scope.addEvent = function(event){
+        //   $scope.addEvents([event])
+        // }
         $scope.addEvents = function(calEvents){
-          eventsService.addEventsToCalender($scope, calEvents)
+          eventsService.addEventsToQueue($scope, calEvents)
+        }
+
+        $scope.eventContainerStyle = function(){
+          return "height: " +  ""
         }
 
         $scope.calHeight = function(){
@@ -30,7 +38,7 @@ var calendar = angular.module('ng.calendar', [])
 
         $scope.dividerRepeat = function(){
           var dividerCount = options.getHourSlots() - 1 
-          return [0,1,2,3]
+          return [0,1,2]
         }
         $scope.hourHeight = function(){
           return "height: " + options.cellHeightToInt() * options.getHourSlots() + "px;"
@@ -49,9 +57,9 @@ var calendar = angular.module('ng.calendar', [])
       link: function(scope, elem, attrs, ctrl){
         $timeout(function(){
           scope.addEvents(scope.events)
-          var eventsOnCalendar = eventsService.getCalendarEvents();
-          for (var i = eventsOnCalendar.length - 1; i >= 0; i--) {
-            var eventNode = eventsOnCalendar[i].htmlNode
+          var eventsInQueue = eventsService.getCalendarEventQueue();
+          for (var i = eventsInQueue.length - 1; i >= 0; i--) {
+            var eventNode = eventsInQueue[i].htmlNode
             var compiledNode = $compile(eventNode)(scope)
             var eventContainer = angular.element(cal.findEventContainer());
             eventContainer.prepend(compiledNode)
