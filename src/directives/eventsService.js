@@ -5,11 +5,6 @@ calendar.factory("eventsService", [ '$compile', '$timeout', function($compile, $
   //
   var eventsOnCalendar = []
   var eventCount = 0
-
-  function bindToScope(scope, calEvent){
-    eval('scope.' + eventVariable(calEvent) + '=calEvent') 
-    return true
-  }
   function eventVariable(calEvent){
       return 'calEvent' + calEvent.elemId
   }
@@ -27,7 +22,7 @@ calendar.factory("eventsService", [ '$compile', '$timeout', function($compile, $
     var yOffset = cal.position.dayEventOffset(calEvent).top
     var style = "height: " + eventHeight() + "px; position: absolute;background: yellow;top:" + yOffset + "px; left: " + widthPerEvent * index + "%; " ;
     style += "width: " + widthPerEvent + "%;"
-    bindToScope(scope, calEvent);
+    scope[eventVariable(calEvent)] = calEvent
     var variable = eventVariable(calEvent)
     var eventNode = "<cal-event event-count= " + calEvent.elemId +  " location-class=" + cal.position.getNodeId() + " action=\"eventClick({event: event})\"  source=" + variable + " style=\"" + style + "\" ></cal-event>" 
     return eventNode 
