@@ -1,15 +1,13 @@
-cal.configuration = (function(){
-  var privateScope = {
-    defaults: {
+calendar.factory("config", function(){
+  var defaults = {
       hourSlots: 2,
       cellHeight: "22px",
       calendarHeight: "1000px",
-    }    
-  }
-  var configuration = {
+    }
+  return {
     userOptions: {},
     getOptions: function(){
-      return angular.extend(privateScope.defaults, this.userOptions)
+      return angular.extend(defaults, this.userOptions)
     },
     cellHeightToInt: function(){
       return parseInt(this.getOptions()["cellHeight"].replace("px", ""))
@@ -20,6 +18,5 @@ cal.configuration = (function(){
     getCalendarHeight: function(){
       return  this.getOptions()["calendarHeight"]
     }
-  };
-  return configuration
-})()
+  }
+})

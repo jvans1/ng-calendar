@@ -31,9 +31,6 @@ cal.position = (function(){
       this.nodeId = "hour" + normalizeTime
       return this.nodeId
     },
-    overLappingEvents: function(){
-
-    },
 
     xOffset: function(){
       var events = cal.eventsInNode(this.nodeId)
@@ -47,6 +44,10 @@ cal.position = (function(){
 //assumption that doens' tfeel  right
   positionObject.getNodeId = function(){
     return privateScope.nodeId
+  }
+
+  positionObject.mouseOffset = function(event){
+    return window.event.clientY
   }
 
   positionObject.dayEventOffset = function(event){

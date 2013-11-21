@@ -1,6 +1,7 @@
 'use strict';
+
 var calendar = angular.module('ng.calendar', [])
-  .directive("calendar", [ '$timeout',  '$compile', 'eventsService', function($timeout, $compile, eventsService){
+  .directive("calendar", [ '$timeout',  '$compile', 'eventsService', 'config', function($timeout, $compile, eventsService, config){
     return {
       restrict: "E",
       scope: {
@@ -11,25 +12,23 @@ var calendar = angular.module('ng.calendar', [])
       replace: true,
       templateUrl: "calendar.html",
       controller: function($scope){
-        cal.configuration.userOptions = $scope.options
-        var options = cal.configuration
         $scope.timeToId = function(time){
           var newTime = time.replace(":", "")
           return "hour" + newTime
         }
         $scope.dividerHeight = function(){
-          return "height: " + options.cellHeightToInt() + "px;"
+          return "height: " + config.cellHeightToInt() + "px;"
         }
         $scope.addEvents = function(calEvents){
           eventsService.addEventsToQueue($scope, calEvents)
         }
 
         $scope.calHeight = function(){
-          return "height: " + options.getCalendarHeight()
+          return "height: " + config.getCalendarHeight()
         }
 
         $scope.dividerRepeat = function(){
-          var dividerCount = options.getHourSlots() - 1
+          var dividerCount = config.getHourSlots() - 1
           var repeat = []
           while(dividerCount > 0){
             repeat.push(" ")
@@ -38,7 +37,7 @@ var calendar = angular.module('ng.calendar', [])
           return repeat
         }
         $scope.hourHeight = function(){
-          return "height: " + options.cellHeightToInt() * options.getHourSlots() + "px;"
+          return "height: " + config.cellHeightToInt() * config.getHourSlots() + "px;"
         }
         $scope.day = true;
         
@@ -52,15 +51,16 @@ var calendar = angular.module('ng.calendar', [])
         $scope.month = false;
       },
       link: function(scope, elem, attrs, ctrl){
+        config.userOptions = scope.options
+        scope.$on("EVENT_CHANGE", function(event){
+          eventsService.resizeEvents()
+        })
         $timeout(function(){
-          scope.addEvents(scope.events)
-          var eventsOnCalendar = eventsService.getCalEventQueue();
-          for (var i = eventsOnCalendar.length - 1; i >= 0; i--) {
-            var eventNode = eventsOnCalendar[i].htmlNode
-            var compiledNode = $compile(eventNode)(scope)
-            var eventContainer = angular.element(cal.findEventContainer());
-            eventContainer.prepend(compiledNode)
-          };
+          
+          var directiveNodes = eventsService.createDirectives(scope, scope.events)
+          var compiledNodes = $compile(directiveNodes)(scope)
+          var eventContainer = angular.element(cal.findEventContainer());
+          eventContainer.prepend(compiledNodes)
         })
       }
     }
