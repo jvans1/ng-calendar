@@ -52,8 +52,8 @@ var calendar = angular.module('ng.calendar', [])
       },
       link: function(scope, elem, attrs, ctrl){
         config.userOptions = scope.options
-        scope.$on("EVENT_CHANGE", function(event){
-          eventsService.resizeEvents()
+        scope.$on("EVENT_CHANGE", function(event, calEvent){
+          eventsService.resizeEvent(calEvent)
         })
         $timeout(function(){
           

@@ -1,45 +1,43 @@
 calendar.factory("eventComparisonService",[ 'time', function(time){
-  var firstEvent, lastEvent, event1, event2;
+  var firstEvent, lastEvent;
   var eventComparisonObj = {}
 
   var extendsIntoEvent = function(){
     var event1Top, event1Height, event2Top;
-    event1Top = parseInt(event1.scope.style.attributes.top.split("px"))
-    event1Height = parseInt(event2.scope.style.attributes.height.split("px"))
-    event2Top = parseInt(event2.scope.style.attributes.top.split("px"))
+    event1Top = parseInt(firstEvent.style.attributes.top.split("px"))
+    event1Height = parseInt(lastEvent.style.attributes.height.split("px"))
+    event2Top = parseInt(lastEvent.style.attributes.top.split("px"))
     return ( event1Top + event1Height ) > event2Top
   }
 
   eventComparisonObj.sameEvent = function(){
-      return event1.elemId === event2.elemId
-    }
+    return firstEvent.$id === lastEvent.$id
+  }
   eventComparisonObj.overlapsFromTop = function(){
       return extendsIntoEvent()
     }
 
   eventComparisonObj.sharesLeftAncher = function(){
-      return event1.scope.leftAlignmentInt() === event2.scope.leftAlignmentInt()
+      return firstEvent.leftAlignmentInt() === lastEvent.leftAlignmentInt()
     }
 
-  eventComparisonObj.setEvent1 = function(event) { 
-    event1 = event
-  }
-  eventComparisonObj.setEvent2 = function(event) { 
-    event2 = event
+  eventComparisonObj.setEvents = function(event1, event2) { 
+    if (time.minutes(event1.startTime) > time.minutes(event2.startTime)){
+      firstEvent = event1
+      lastEvent = event2
+    }else{
+      firstEvent = event2
+      lastEvent = event1
+    }
+    return this
   }
 
   eventComparisonObj.lastEvent =  function (){
-    console.log(event1.title)
-    console.log(event2.title)
-    if (time.minutes(event1.startTime) > time.minutes(event2.startTime)){
-      return event1
-    }else{
-      return event2
-    }
+    return lastEvent
   }
+
   var eventComparisonConstructor = function(event1, event2){
-    eventComparisonObj.setEvent1(event1)
-    eventComparisonObj.setEvent2(event2)
+    eventComparisonObj.setEvents(event1, event2)
     return eventComparisonObj
   }
   return eventComparisonConstructor

@@ -7,11 +7,11 @@ angular.module("calendarDemo", ['ng.calendar']).controller('appCtrl',[ '$scope',
     console.log(event)
   }
   $scope.events = [
-    // {
-    //   startTime: '14:00:04',
-    //   endTime: "17:30:00",
-    //   title: 'Booty call',
-    // },
+    {
+      startTime: '14:00:04',
+      endTime: "17:30:00",
+      title: 'Booty call',
+    },
     {
       startTime: '16:04:04',
       endTime: "19:30:00",

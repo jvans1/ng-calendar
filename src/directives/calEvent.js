@@ -6,7 +6,6 @@ calendar.directive('calEvent', [ 'config', 'time', 'eventsService', function(con
         source: '=',
         action: '&',
         locationClass: '@',
-        eventCount: '@',
         defaultStyle: '@',
       },
       replace: true,
@@ -34,6 +33,7 @@ calendar.directive('calEvent', [ 'config', 'time', 'eventsService', function(con
           this.style.attributes.left = newSize + "%"
           this.style.attributes.width = newSize + "%"
           this.style.attributes.zIndex = 1
+          console.log("resize")
           return this
         }
 
@@ -66,13 +66,9 @@ calendar.directive('calEvent', [ 'config', 'time', 'eventsService', function(con
  
       },
       link: function(scope, elem, attrs, ctrl){
-        var style = scope.configureStyle(), calEvent = scope.source;
-        calEvent.scope = scope
-        calEvent.resize = function(){
-          this.scope.resize(1)
-        }
-        events.storeEvent(calEvent)
-        scope.$emit("EVENT_CHANGE", calEvent)
+        scope.configureStyle()
+        events.storeScope(scope)
+        scope.$emit("EVENT_CHANGE", scope)
       }
     };
   }
